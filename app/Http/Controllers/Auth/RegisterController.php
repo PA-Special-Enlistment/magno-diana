@@ -56,6 +56,18 @@ class RegisterController extends Controller
         ]);
     }
 
+    public function index(Request $request)
+    {
+
+        $users = User::orderBy('id','desc')
+                               ->get();
+
+        $no = 1;
+        return view('users.form')->with([
+            'users'=>$users,
+            ]);
+    }
+
     /**
      * Create a new user instance after a valid registration.
      *

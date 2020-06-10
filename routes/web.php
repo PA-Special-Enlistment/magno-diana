@@ -14,9 +14,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/users', 'UsersController@index')->name('users');
+Route::get('/staff', 'StaffController@index')->name('staff');
+Route::get('/equipment', 'EquipmentController@index')->name('equipment');
+Route::post('/createUser', 'UsersController@createUser');
+Route::post('/createStaff', 'StaffController@createStaff');
+Route::post('/createEquipment', 'EquipmentController@createEquipment');
+// Route::get('/staff', function (){
+//     return view('staff.index');
+// });
+
+Route::get('/users_create', function (){
+    return view('users.form');
+});
