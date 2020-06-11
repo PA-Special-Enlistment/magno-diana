@@ -9,7 +9,7 @@
                         <a><h4>List of Staff</h4><a/>
                         <ul class="navbar-nav ml-lg-auto">
                             <li class="nav-item">
-                                <a  data-target="#myModal" role="button" class="btn btn-link text-default text-black" data-toggle="modal" data-placement="left" title="Add Staff" >  
+                                <a href="{{ route('staff.create') }}"  data-target="#myModal" role="button" class="btn btn-link text-default text-black" data-toggle="tooltip" data-placement="left" title="Add Staff" >  
                                 <i class="fa fa-user-plus fa-2x"></i> Add Staff
                                 </a>
                             </li>
@@ -92,17 +92,16 @@
                             <th>Action</th>
                             </tr>
                         </thead>
-                        @foreach($data as $staff)
+                        @foreach($staff as $staffs)
                         <tr>
-                            <td>{{ $staff->id }}</td>
-                            <td>{{ $staff->first_name }} {{ $staff->last_name }}</td>
-                            <td>{{ $staff->designation }}</td>
-                            <td>{{ $staff->birthdate }}</td>
-                            <td>{{ $staff->mobile_number }}</td>
-                            <td>{{ $staff->email }}</td>
+                            <td>{{ $staffs->id }}</td>
+                            <td>{{ $staffs->first_name }} {{ $staffs->last_name }}</td>
+                            <td>{{ $staffs->designation }}</td>
+                            <td>{{ $staffs->birthdate }}</td>
+                            <td>{{ $staffs->mobile_number }}</td>
+                            <td>{{ $staffs->email }}</td>
                             <td>
-        
-                                <a href="{{ url('/edit/'.$staff->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                                <a href="{{ url('/edit/'.$staffs->id) }}" class="btn btn-sm btn-warning">Edit</a>
         
                             </td>
         

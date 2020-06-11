@@ -81,11 +81,11 @@
                         </a>
     
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ url('/settings')}}">
+                                {{-- <a class="dropdown-item" href="{{ url('/settings')}}">
                                 <span class="fa fa-cog"></span>
                                 Setting
                                 </a>
-                                <div class="dropdown-divider"></div>
+                                <div class="dropdown-divider"></div> --}}
                             <a class="dropdown-item" href="{{ url('/users') }}">
                                 <span class="fa fa-cog"></span>
                                     {{ __('Register') }}

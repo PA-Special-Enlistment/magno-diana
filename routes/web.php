@@ -19,13 +19,17 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'StaffController@index')->name('home');
 Route::get('/users', 'UsersController@index')->name('users');
 Route::get('/staff', 'StaffController@index')->name('staff');
 Route::get('/equipment', 'EquipmentController@index')->name('equipment');
-Route::post('/createUser', 'UsersController@createUser');
+// Route::post('/createUser', 'UsersController@create');
 Route::post('/createStaff', 'StaffController@createStaff');
 Route::post('/createEquipment', 'EquipmentController@createEquipment');
+Route::post('updateUser/{id}', 'UsersController@updateUser');
+Route::get('/edit/{id}', 'UsersController@edit');
+Route::resource('users', 'UsersController');
+Route::resource('staff', 'StaffController');
 // Route::get('/staff', function (){
 //     return view('staff.index');
 // });

@@ -12,10 +12,14 @@ class StaffController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $data = Staff::all();
-        return view('staff.index',['data' => $data]);
+        return view('staff.index',['staff' => $data]);
     }
 
     /**
@@ -25,7 +29,7 @@ class StaffController extends Controller
      */
     public function create()
     {
-        //
+        return view('staff.form');//,$partner->id);
     }
 
     /**
@@ -34,7 +38,7 @@ class StaffController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function createStaff(Request $request)
+    public function store(Request $request)
     {
         $user = new Staff;
 
@@ -48,7 +52,7 @@ class StaffController extends Controller
         $user->designation = $request->input('designation');
 
         $user->save();
-        return redirect()->route('staff');
+        return view('staff.form');//,$partner->id);
     }
 
     /**
@@ -70,7 +74,11 @@ class StaffController extends Controller
      */
     public function edit($id)
     {
-        //
+        $staff = Staff::find($id);
+
+        return view('staff.form')->with([
+            'staff' => $staff
+          ]);
     }
 
     /**

@@ -9,11 +9,12 @@
                         <a><h4>Users</h4><a/>
                         <ul class="navbar-nav ml-lg-auto">
                             <li class="nav-item">
-                                <a  data-target="#myModal" role="button" class="btn btn-link text-default text-black" data-toggle="modal" data-placement="left" title="ADD PARTNER" >  
+                                <a href="{{ route('users.create') }}" data-target="#myModal" role="button" class="btn btn-link text-default text-black" data-toggle="tooltip" data-placement="left" title="ADD PARTNER" >  
                                 <i class="fa fa-user-plus fa-2x"></i> Add User
                                     </a>
                             </li>
                         </ul>
+                        
                         <div class="modal fade" id="myModal" role="dialog">
                             <div class="modal-dialog modal-xl">
                             
@@ -25,7 +26,11 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="card-body">
-                                        <form method="post" action="{{ url('/createUser') }}">
+                                        @if(isset($users))
+                                            <form method="put" action="{{ url('/updateUser') }}">
+                                        @else
+                                            <form method="post" action="{{ url('/createUser') }}">
+                                        @endif
                                             @csrf
                     
                                             <div class="form-group row">
@@ -134,7 +139,7 @@
                             <th>Action</th>
                             </tr>
                         </thead>
-                        @foreach($data as $user)
+                        @foreach($users as $user)
                         <tr>
                             <td>{{ $user->id }}</td>
                             <td>{{ $user->first_name }} {{ $user->last_name }}</td>
