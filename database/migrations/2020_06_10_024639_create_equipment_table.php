@@ -15,7 +15,6 @@ class CreateEquipmentTable extends Migration
     {
         Schema::create('equipment', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');
             $table->date('registration_date');
             $table->string('code');
             $table->string('name');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Session;
 
 class UsersController extends Controller
 {
@@ -15,7 +16,7 @@ class UsersController extends Controller
     public function index()
     {
         $data = User::all();
-        return view('users.index',['data' => $data]);
+        return view('users.index',['users' => $data]);
     }
 
     /**
@@ -25,7 +26,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.form');//,$partner->id);
     }
 
     /**
@@ -34,7 +35,7 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function createUser(Request $request)
+    public function store(Request $request)
     {
         // return $request->input('username'); 
         $check_user = User::where('username','LIKE',$request->input('username'))
@@ -46,7 +47,7 @@ class UsersController extends Controller
 
           
 
-          return redirect()->route('users');//,$partner->id);
+          return view('users.form');//,$partner->id);
 
         }else{
         $user = new User;
@@ -65,9 +66,9 @@ class UsersController extends Controller
 
         $user->save();
 
-        
+        Session::flash('success','User record was Successfully Updated');
 
-        return redirect()->route('users');
+        return redirect()->route('users.index');
         }
     }
 
@@ -90,7 +91,12 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        // return $id;
+        $user = User::find($id);
+
+        return view('users.form')->with([
+            'users' => $user
+          ]);
     }
 
     /**
@@ -102,7 +108,25 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $users = User::find($id);
+
+        $users->last_name = $request->input('last_name');
+        $users->first_name = $request->input('first_name');
+        $users->middle_name = $request->input('middle_name');
+        $users->suffix_name = $request->input('suffix_name');
+        $users->birthdate = $request->input('birthdate');
+        $users->mobile_number = $request->input('mobile_number');
+        $users->email = $request->input('email');
+        $users->username = $request->input('username');
+        $users->password = bcrypt($request->input('password'));
+        $users->designation = $request->input('designation');
+        $users->isAdmin = $request->input('isAdmin');
+
+        $users->save();
+
+        Session::flash('success','User record was Successfully Updated');
+
+        return redirect()->route('users.index');
     }
 
     /**
@@ -116,4 +140,4 @@ class UsersController extends Controller
         //
     }
 
-}
+}   
