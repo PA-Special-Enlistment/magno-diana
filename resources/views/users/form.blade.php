@@ -174,7 +174,7 @@
                     {{ Form::text('designation',null,['class'=>'form-control','id'=>'designation']) }} 
                 </div>
             </div>
-            <div class="card-footer border-primary" style="center">
+            <div class="card-footer border-primary" style="text-align:center">
                 {{ Form::button( isset($users) ? '<i class="fa fa-save"></i> Save Changes' : '<i class="fa fa-save"></i> Submit', ['type' => 'submit', 'class' => 'btn btn-primary'] )  }}
                 <a href="{{ route('users.index') }}" class="btn btn-icon btn-3 btn-success" role="button">
                     <i class="fa fa-arrow-left"></i>

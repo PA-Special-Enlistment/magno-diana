@@ -38,7 +38,7 @@
                     {{ Form::text('name',null,['class'=>'form-control','id'=>'name']) }} 
                 </div>
             </div>
-            <div class="card-footer border-primary" style="center">
+            <div class="card-footer border-primary" style="text-align:center">
                 {{ Form::button( isset($equipment) ? '<i class="fa fa-save"></i> Save Changes' : '<i class="fa fa-save"></i> Submit', ['type' => 'submit', 'class' => 'btn btn-primary'] )  }}
                 <a href="{{ route('equipment.index') }}" class="btn btn-icon btn-3 btn-success" role="button">
                     <i class="fa fa-arrow-left"></i>

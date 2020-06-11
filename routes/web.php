@@ -30,9 +30,15 @@ Route::post('updateUser/{id}', 'UsersController@updateUser');
 Route::get('/edit/{id}', 'UsersController@edit');
 Route::get('/editStaff/{id}', 'StaffController@edit');
 Route::get('/editEquip/{id}', 'EquipmentController@edit');
+Route::get('/assign/{id}', 'AssignController@edit');
+Route::get('/assignStaff/{id}', 'AssignController@editStaff');
+Route::get('/returnEquip/{id}', 'ReturnController@edit');
+Route::get('/returnStaff/{id}', 'ReturnController@editReturn');
+Route::resource('return', 'ReturnController');
 Route::resource('users', 'UsersController');
 Route::resource('staff', 'StaffController');
 Route::resource('equipment', 'EquipmentController');
+Route::resource('assign', 'AssignController');
 // Route::get('/staff', function (){
 //     return view('staff.index');
 // });

@@ -21,23 +21,24 @@
                         <table class="table">
                         <thead>
                             <tr>
-                            <th>ID/Code</th>
-                            <th>Registration Date</th>
-                            <th>Type of Product</th>
-                            <th>Name of Product</th>
-                            <th>Count</th>
-                            <th>Action</th>
+                            <th style="text-align:center">ID/Code</th>
+                            <th style="text-align:center">Registration Date</th>
+                            <th style="text-align:center">Type of Product</th>
+                            <th style="text-align:center">Name of Product</th>
+                            <th style="text-align:center">Assignee</th>
+                            <th style="text-align:center">Action</th>
                             </tr>
                         </thead>
                         @foreach($data as $equip)
                         <tr>
-                            <td>{{ $equip->id }}</td>
-                            <td>{{ $equip->registration_date }}</td>
-                            <td>{{ $equip->type }}</td>
-                            <td>{{ $equip->name }}</td>
-                            <td>{{ $equip->count }}</td>
-                            <td>
+                            <td style="text-align:center">{{ $equip->id }}</td>
+                            <td style="text-align:center">{{ $equip->registration_date }}</td>
+                            <td style="text-align:center">{{ $equip->type }}</td>
+                            <td style="text-align:center">{{ $equip->name }}</td>
+                            <td style="text-align:center">{{ $equip->count }}</td>
+                            <td style="text-align:center">
                                 <a href="{{ url('/edit/'.$equip->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                                <a href="{{ url('/assign/'.$equip->id) }}" class="btn btn-sm btn-warning">Assign</a>
                             </td>
                         </tr>
                         @endforeach

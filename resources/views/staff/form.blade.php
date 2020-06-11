@@ -34,15 +34,15 @@
             </div>
 
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-4">
                     {{ Form::label('birthdate','BIRTHDATE') }}
                     {{ Form::date('birthdate',null,['class'=>'form-control','id'=>'birthdate','name'=>'birthdate']) }} 
                 </div> 
-                <div class="col-md-3">
+                <div class="col-md-4">
                     {{ Form::label('email','EMAIL') }}
                     {{ Form::email('email',null,['class'=>'form-control','id'=>'email']) }} 
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     {{ Form::label('mobile_number','MOBILE NUMBER') }}
                     {{ Form::text('mobile_number',null,['class'=>'form-control','id'=>'mobile_number']) }} 
                 </div>
@@ -53,7 +53,7 @@
                     {{ Form::text('designation',null,['class'=>'form-control','id'=>'designation']) }} 
                 </div>
             </div>
-            <div class="card-footer border-primary" style="center">
+            <div class="card-footer border-primary" style="text-align:center">
                 {{ Form::button( isset($staff) ? '<i class="fa fa-save"></i> Save Changes' : '<i class="fa fa-save"></i> Submit', ['type' => 'submit', 'class' => 'btn btn-primary'] )  }}
                 <a href="{{ route('staff.index') }}" class="btn btn-icon btn-3 btn-success" role="button">
                     <i class="fa fa-arrow-left"></i>
