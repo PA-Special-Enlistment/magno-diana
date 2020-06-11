@@ -46,14 +46,6 @@
                     {{ Form::label('mobile_number','MOBILE NUMBER') }}
                     {{ Form::text('mobile_number',null,['class'=>'form-control','id'=>'mobile_number']) }} 
                 </div>
-                <div class="col-md-3">
-                    {{ Form::label('isAdmin','IS ADMIN') }}
-                    @if(isset($user))
-                    {{ Form::select('isAdmin', ['Y' => 'Yes', 'N' => 'No'],null, ['class' => 'form-control','id' => 'isAdmin','name' => 'isAdmin']) }}
-                    @else
-                    {{ Form::select('isAdmin', ['Y' => 'Yes', 'N' => 'No'],'N', ['class' => 'form-control','id' => 'isAdmin','name' => 'isAdmin']) }}
-                    @endif
-                </div>
             </div>
             <div class="row">
                 <div class="col-md-12">

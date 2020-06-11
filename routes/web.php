@@ -28,6 +28,7 @@ Route::post('/createStaff', 'StaffController@createStaff');
 Route::post('/createEquipment', 'EquipmentController@createEquipment');
 Route::post('updateUser/{id}', 'UsersController@updateUser');
 Route::get('/edit/{id}', 'UsersController@edit');
+Route::get('/editStaff/{id}', 'StaffController@edit');
 Route::resource('users', 'UsersController');
 Route::resource('staff', 'StaffController');
 // Route::get('/staff', function (){

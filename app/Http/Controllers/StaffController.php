@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Staff;
+use Session;
 
 class StaffController extends Controller
 {
@@ -18,8 +19,9 @@ class StaffController extends Controller
 
     public function index()
     {
-        $data = Staff::all();
-        return view('staff.index',['staff' => $data]);
+        $staff = Staff::all();
+        return view('staff.index',
+        ['staff' => $staff]);
     }
 
     /**
@@ -40,19 +42,19 @@ class StaffController extends Controller
      */
     public function store(Request $request)
     {
-        $user = new Staff;
+        $staff = new Staff;
 
-        $user->last_name = $request->input('last_name');
-        $user->first_name = $request->input('first_name');
-        $user->middle_name = $request->input('middle_name');
-        $user->suffix_name = $request->input('suffix_name');
-        $user->birthdate = $request->input('birthdate');
-        $user->mobile_number = $request->input('mobile_number');
-        $user->email = $request->input('email');
-        $user->designation = $request->input('designation');
+        $staff->last_name = $request->input('last_name');
+        $staff->first_name = $request->input('first_name');
+        $staff->middle_name = $request->input('middle_name');
+        $staff->suffix_name = $request->input('suffix_name');
+        $staff->birthdate = $request->input('birthdate');
+        $staff->mobile_number = $request->input('mobile_number');
+        $staff->email = $request->input('email');
+        $staff->designation = $request->input('designation');
 
-        $user->save();
-        return view('staff.form');//,$partner->id);
+        $staff->save();
+        return redirect()->route('staff.index');
     }
 
     /**
@@ -90,7 +92,22 @@ class StaffController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $staff = Staff::find($id);
+
+        $staff->last_name = $request->input('last_name');
+        $staff->first_name = $request->input('first_name');
+        $staff->middle_name = $request->input('middle_name');
+        $staff->suffix_name = $request->input('suffix_name');
+        $staff->birthdate = $request->input('birthdate');
+        $staff->mobile_number = $request->input('mobile_number');
+        $staff->email = $request->input('email');
+        $staff->designation = $request->input('designation');
+
+        $staff->save();
+
+        Session::flash('success','User record was Successfully Updated');
+
+        return redirect()->route('staff.index');
     }
 
     /**
