@@ -25,7 +25,7 @@
                             <th style="text-align:center">Registration Date</th>
                             <th style="text-align:center">Type of Product</th>
                             <th style="text-align:center">Name of Product</th>
-                            <th style="text-align:center">Assignee</th>
+                            <th style="text-align:center">Count</th>
                             <th style="text-align:center">Action</th>
                             </tr>
                         </thead>
