@@ -29,7 +29,7 @@ class EquipmentController extends Controller
      */
     public function create()
     {
-        //
+        return view('equip.form');
     }
 
     /**
@@ -38,19 +38,21 @@ class EquipmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function createEquipment(Request $request)
+    public function store(Request $request)
     {
         $user = new Equipment;
 
         $user->code = $request->input('code');
         $user->name = $request->input('name');
+        $user->type = $request->input('type');
+        $user->count = $request->input('count');
         $user->registration_date = $request->input('registration_date');
 
         $user->save();
 
         
 
-        return redirect()->route('equipment');
+        return redirect()->route('equipment.index');
     }
 
     /**
@@ -72,7 +74,11 @@ class EquipmentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Equipment::find($id);
+
+        return view('equip.form')->with([
+            'data' => $data
+          ]);
     }
 
     /**

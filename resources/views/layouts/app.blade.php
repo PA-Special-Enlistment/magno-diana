@@ -69,13 +69,21 @@
                     </div>
                     <ul class="navbar-nav ml-lg-auto color-black">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/equipment')}}">EQUIPMENTS
+                        <a class="nav-link" href="{{ url('/staff')}}">Staff
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/staff')}}">STAFF
+                        <a class="nav-link" href="{{ url('/equipment')}}">Equipment
                         </a>
                     </li>
+                    @if(Auth::user()->isAdmin == 'Y')
+                    <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/users')}}">Users
+                            </a>
+                        </li>
+                    <div class="dropdown-divider"></div>
+                    @else
+                    @endif
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->first_name }} <span class="caret"></span>
                         </a>
@@ -86,11 +94,11 @@
                                 Setting
                                 </a>
                                 <div class="dropdown-divider"></div> --}}
-                            <a class="dropdown-item" href="{{ url('/users') }}">
+                            {{-- <a class="dropdown-item" href="{{ url('/users') }}">
                                 <span class="fa fa-cog"></span>
                                     {{ __('Register') }}
-                            </a>
-                            <div class="dropdown-divider"></div>
+                            </a> --}}
+                            {{-- <div class="dropdown-divider"></div> --}}
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">

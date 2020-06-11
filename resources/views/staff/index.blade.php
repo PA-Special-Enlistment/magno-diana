@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="row">
-                        <a><h4>List of Staff</h4><a/>
+                        <a class="navbar-brand">Staff</a>
                         <ul class="navbar-nav ml-lg-auto">
                             <li class="nav-item">
                                 <a href="{{ route('staff.create') }}"  data-target="#myModal" role="button" class="btn btn-link text-default text-black" data-toggle="tooltip" data-placement="left" title="Add Staff" >  
@@ -22,25 +22,26 @@
                         <table class="table">
                         <thead>
                             <tr>
-                            <th>No.</th>
-                            <th>Name</th>
-                            <th>Designation</th>
-                            <th>Birthdate</th>
-                            <th>Mobile Number</th>
-                            <th>Email Address</th>
-                            <th>Action</th>
+                            <th style="text-align:center">No.</th>
+                            <th style="text-align:center">Name</th>
+                            <th style="text-align:center">Designation</th>
+                            <th style="text-align:center">Birthdate</th>
+                            <th style="text-align:center">Mobile Number</th>
+                            <th style="text-align:center">Email Address</th>
+                            <th style="text-align:center">Action</th>
                             </tr>
                         </thead>
                         @foreach($staff as $data)
                         <tr>
-                            <td>{{ $data->id }}</td>
-                            <td>{{ $data->first_name }} {{ $data->last_name }}</td>
-                            <td>{{ $data->designation }}</td>
-                            <td>{{ $data->birthdate }}</td>
-                            <td>{{ $data->mobile_number }}</td>
-                            <td>{{ $data->email }}</td>
-                            <td>
+                            <td style="text-align:center">{{ $data->id }}</td>
+                            <td style="text-align:center">{{ $data->first_name }} {{ $data->last_name }}</td>
+                            <td style="text-align:center">{{ $data->designation }}</td>
+                            <td style="text-align:center">{{ $data->birthdate }}</td>
+                            <td style="text-align:center">{{ $data->mobile_number }}</td>
+                            <td style="text-align:center">{{ $data->email }}</td>
+                            <td style="text-align:center">
                                 <a href="{{ url('/editStaff/'.$data->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                                <a href="{{ url('/editEquip/'.$data->id) }}" class="btn btn-sm btn-warning">Assign</a>
                             </td>
                         </tr>
                     @endforeach

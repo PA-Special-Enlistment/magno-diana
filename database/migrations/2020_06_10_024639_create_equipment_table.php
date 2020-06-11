@@ -17,6 +17,8 @@ class CreateEquipmentTable extends Migration
             $table->id();
             $table->date('registration_date');
             $table->string('code');
+            $table->string('count');
+            $table->string('type');
             $table->string('name');
             $table->timestamps();
         });

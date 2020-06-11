@@ -50,9 +50,9 @@ class UsersController extends Controller
         if($count >= 1){
 
           
-
-          return view('users.form');//,$partner->id);
-
+            Session::flash('repeat','Staff Already Exist');
+            return redirect()->route('users.index');
+            
         }else{
         $user = new User;
 

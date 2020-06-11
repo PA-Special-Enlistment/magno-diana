@@ -20,8 +20,7 @@ class StaffController extends Controller
     public function index()
     {
         $staff = Staff::all();
-        return view('staff.index',
-        ['staff' => $staff]);
+        return view('staff.index',['staff' => $staff]);
     }
 
     /**
@@ -42,6 +41,18 @@ class StaffController extends Controller
      */
     public function store(Request $request)
     {
+        $check_user = Staff::whereRaw('first_name LIKE "'.$request->input("first_name").'" AND last_name LIKE "'.$request->input("last_name").'" AND middle_name LIKE "'.$request->input("middle_name").'" AND birthdate LIKE "'.$request->input("birthdate").'"')
+                                  ->get();
+
+        $count = count($check_user);
+
+        if($count >= 1){
+
+          
+
+          return view('staff.form');//,$partner->id);
+
+        }else{
         $staff = new Staff;
 
         $staff->last_name = $request->input('last_name');
@@ -55,6 +66,7 @@ class StaffController extends Controller
 
         $staff->save();
         return redirect()->route('staff.index');
+        }
     }
 
     /**
@@ -105,7 +117,7 @@ class StaffController extends Controller
 
         $staff->save();
 
-        Session::flash('success','User record was Successfully Updated');
+        Session::flash('success','Staff record was Successfully Updated');
 
         return redirect()->route('staff.index');
     }

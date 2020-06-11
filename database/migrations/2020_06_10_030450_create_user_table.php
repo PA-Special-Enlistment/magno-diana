@@ -23,7 +23,7 @@ class CreateUserTable extends Migration
             $table->string('username');
             $table->string('password');
             $table->date('birthdate');
-            $table->integer('mobile_number')->length(10);
+            $table->string('mobile_number');
             $table->string('designation');
             $table->char('isAdmin')->length(1);
             $table->timestamps();
