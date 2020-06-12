@@ -104,10 +104,10 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        // return $id;
+        $suffix_name = LibSuffixName::pluck('suffix_desc', 'suffix_code');
         $user = User::find($id);
 
-        return view('users.form')->with([
+        return view('users.form', compact('suffix_name'))->with([
             'users' => $user
           ]);
     }

@@ -97,9 +97,10 @@ class StaffController extends Controller
      */
     public function edit($id)
     {
+        $suffix_name = LibSuffixName::pluck('suffix_desc', 'suffix_code');
         $staff = Staff::find($id);
 
-        return view('staff.form')->with([
+        return view('staff.form', compact('suffix_name'))->with([
             'staff' => $staff
           ]);
     }
