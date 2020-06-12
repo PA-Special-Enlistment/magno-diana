@@ -33,7 +33,7 @@ Route::get('/editEquip/{id}', 'EquipmentController@edit');
 Route::get('/assign/{id}', 'AssignController@edit');
 Route::get('/assignStaff/{id}', 'AssignController@editStaff');
 Route::get('/returnEquip/{id}', 'ReturnController@edit');
-Route::get('/returnStaff/{id}', 'ReturnController@editReturn');
+Route::get('/return/{id}', 'ReturnController@editReturn');
 Route::resource('return', 'ReturnController');
 Route::resource('users', 'UsersController');
 Route::resource('staff', 'StaffController');

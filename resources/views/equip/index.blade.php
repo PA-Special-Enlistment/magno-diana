@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+@isset($message)
+    <div class="alert alert-success">
+    <strong>{{@message}}</strong>
+    </div>
+    @endif
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -24,8 +29,8 @@
                             <th style="text-align:center">ID/Code</th>
                             <th style="text-align:center">Registration Date</th>
                             <th style="text-align:center">Type of Product</th>
-                            <th style="text-align:center">Name of Product</th>
-                            <th style="text-align:center">Count</th>
+                            <th style="text-align:center">Brand</th>
+                            <th style="text-align:center">Status</th>
                             <th style="text-align:center">Action</th>
                             </tr>
                         </thead>

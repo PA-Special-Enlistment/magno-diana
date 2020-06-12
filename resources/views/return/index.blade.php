@@ -16,8 +16,8 @@
                         <thead>
                             <tr>
                             <th style="text-align:center">ID/Code</th>
-                            <th style="text-align:center">Equipment Type</th>
-                            <th style="text-align:center">Product Name</th>
+                            <th style="text-align:center">Type of Equipment</th>
+                            <th style="text-align:center">Brand</th>
                             <th style="text-align:center">Date Returned</th>
                             <th style="text-align:center">Remarks</th>
                             </tr>

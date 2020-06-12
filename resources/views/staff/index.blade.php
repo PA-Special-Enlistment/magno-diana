@@ -41,8 +41,8 @@
                             <td style="text-align:center">{{ $data->email }}</td>
                             <td style="text-align:center">
                                 <a href="{{ url('/editStaff/'.$data->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                                <a href="{{ url('/assignStaff/'.$data->id) }}" class="btn btn-sm btn-warning">Assign</a>
-                                <a href="{{ url('/returnStaff/'.$data->id) }}" class="btn btn-sm btn-warning">Return</a>
+                                <a href="{{ url('/assignStaff/'.$data->id) }}" class="btn btn-sm btn-warning">Assigned</a>
+                                {{-- <a href="{{ url('/return/'.$data->id) }}" class="btn btn-sm btn-warning">Return</a> --}}
                             </td>
                         </tr>
                     @endforeach

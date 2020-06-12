@@ -21,7 +21,7 @@ class CreateStaffTable extends Migration
             $table->string('suffix_name');
             $table->date('birthdate');
             $table->string('email');
-            $table->integer('mobile_number')->length(10);
+            $table->string('mobile_number');
             $table->string('designation');
             $table->timestamps();
         });

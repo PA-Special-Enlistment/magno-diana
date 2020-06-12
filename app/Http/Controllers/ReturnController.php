@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Returns;
 use App\Assign;
 use App\Staff;
+use App\Equipment;
 use Session;
 use DB;
 
@@ -41,7 +42,7 @@ class ReturnController extends Controller
     {
         $return = new Returns;
 
-        $return->count = $request->input('count');
+        // $return->count = $request->input('count');
         $return->equipment_id = $request->input('equipment_id');
         $return->staff_id = $request->input('staff_id');
         $return->assign_id = $request->input('assign_id');
@@ -50,6 +51,12 @@ class ReturnController extends Controller
 
         $return->save();
         Session::flash('success','Staff record was Successfully Updated');
+
+        $updateStatus = Equipment::find($request->input('equipment_id'));
+        $updateStatus->count = 'Return';
+
+        $updateStatus->update();
+
 
         return redirect()->route('equipment.index');
     }
@@ -83,7 +90,7 @@ class ReturnController extends Controller
     public function editReturn($id)
     {
         $staffID = $id;
-        $name = Staff::select(DB::raw('CONCAT(first_name, " ", last_name) AS full_name'), 'id')->where('id', '=', $id)->pluck('full_name');
+        $name = Staff::select(DB::raw('CONCAT(first_name, " ", last_name) AS full_name'), 'id')->where('id', '=', $id)->pluck('full_name')->first();
         $record = Returns::select('code', 'equipment_id', 'return.staff_id', 'return.id', 'return.assign_id', 'type', 'name', 'date_return', 'remarks')->where('return.staff_id', '=', $id)->join('equipment', 'return.equipment_id', '=', 'equipment.id')->join('staff', 'return.staff_id', '=','staff.id')->get();
         // $equipment = Equipment::orderBy('id')->pluck('name', 'id');
 

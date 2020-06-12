@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Equipment;
+use App\LibStatus;
 
 class EquipmentController extends Controller
 {
@@ -14,6 +15,10 @@ class EquipmentController extends Controller
      */
     public function __construct(){
         $this->middleware('auth');
+    }
+
+    public function getStatus(){
+        return $status = LibStatus::all();
     }
 
     public function index()
@@ -29,7 +34,8 @@ class EquipmentController extends Controller
      */
     public function create()
     {
-        return view('equip.form');
+        $status = LibStatus::pluck('desc', 'desc')->all();
+        return view('equip.form', compact('status'));
     }
 
     /**
@@ -50,9 +56,10 @@ class EquipmentController extends Controller
 
         $user->save();
 
-        
+        $message="Registered successfully";
 
-        return redirect()->route('equipment.index');
+        return redirect()->route('equipment.index',compact('message'));
+        return back()->with('success', 'Registered Sucessfulley');
     }
 
     /**

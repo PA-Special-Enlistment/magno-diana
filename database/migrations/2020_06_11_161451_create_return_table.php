@@ -19,7 +19,6 @@ class CreateReturnTable extends Migration
             $table->string('equipment_id');
             $table->string('staff_id');
             $table->date('date_return');
-            $table->integer('count')->length(2)->nullable();
             $table->string('remarks')->nullable();
             $table->timestamps();
         });

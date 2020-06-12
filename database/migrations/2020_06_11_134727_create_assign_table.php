@@ -17,7 +17,6 @@ class CreateAssignTable extends Migration
             $table->id();
             $table->date('assign_date');
             $table->string('staff_id');
-            $table->string('count');
             $table->string('equipment_id');
             $table->timestamps();
         });

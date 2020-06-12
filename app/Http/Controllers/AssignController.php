@@ -53,7 +53,6 @@ class AssignController extends Controller
     {
         $assign = new Assign;
 
-        $assign->count = $request->input('count');
         $assign->equipment_id = $request->input('equipment_id');
         $assign->staff_id = $request->input('staff_id');
         $assign->assign_date = $request->input('assign_date');
@@ -61,7 +60,12 @@ class AssignController extends Controller
         $assign->save();
         Session::flash('success','Staff record was Successfully Updated');
 
-        return redirect()->route('euipment.index');
+        $updateStatus = Equipment::find($request->input('equipment_id'));
+        $updateStatus->count = 'Assign';
+
+        $updateStatus->update();
+
+        return redirect()->route('equipment.index');
     }
 
     /**
@@ -96,7 +100,7 @@ class AssignController extends Controller
     public function editStaff($id)
     {
         $staffID = $id;
-        $name = Staff::select(DB::raw('CONCAT(first_name, " ", last_name) AS full_name'), 'id')->where('id', '=', $id)->pluck('full_name');
+        $name = Staff::select(DB::raw('CONCAT(first_name, " ", last_name) AS full_name'), 'id')->where('id', '=', $id)->pluck('full_name')->first();
         $record = Assign::select('code', 'equipment_id', 'assign.staff_id', 'assign.id', 'type', 'name', 'assign_date')->where('assign.staff_id', '=', $id)->join('equipment', 'assign.equipment_id', '=', 'equipment.id')->join('staff', 'assign.staff_id', '=','staff.id')->get();
         // $equipment = Equipment::orderBy('id')->pluck('name', 'id');
 
