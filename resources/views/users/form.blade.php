@@ -141,8 +141,8 @@
                     {{ Form::text('middle_name',null,['class'=>'form-control','id'=>'middle_name']) }} 
                 </div>
                 <div class="col-md-3">
-                    {{ Form::label('suffix_name','SUFFIX NAME') }}
-                    {{ Form::text('suffix_name',null,['class'=>'form-control','id'=>'suffix_name']) }} 
+                    {{ Form::label('suffix_name','Assignee') }}
+                    {{ Form::select('suffix_name',$suffix_name, isset($users) ? null : 'NOTAP',['class' => 'form-control','id' => 'suffix_name','name' => 'suffix_name']) }}
                 </div>
             </div>
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Staff;
 use Session;
+use App\LibSuffixName;
 
 class StaffController extends Controller
 {
@@ -30,7 +31,8 @@ class StaffController extends Controller
      */
     public function create()
     {
-        return view('staff.form');//,$partner->id);
+        $suffix_name = LibSuffixName::pluck('suffix_desc', 'suffix_code');
+        return view('staff.form', compact('suffix_name'));//,$partner->id);
     }
 
     /**

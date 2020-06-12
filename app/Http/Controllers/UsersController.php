@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\LibSuffixName;
 use Session;
 
 class UsersController extends Controller
@@ -30,7 +31,8 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('users.form');//,$partner->id);
+        $suffix_name = LibSuffixName::pluck('suffix_desc', 'suffix_code');
+        return view('users.form', compact('suffix_name'));//,$partner->id);
     }
 
     /**
@@ -52,7 +54,7 @@ class UsersController extends Controller
           
             Session::flash('repeat','Staff Already Exist');
             return redirect()->route('users.index');
-            
+
         }else{
         $user = new User;
 

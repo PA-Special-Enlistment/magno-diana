@@ -29,7 +29,7 @@
                             <td style="text-align:center">{{ $data->name }}</td>
                             <td style="text-align:center">{{ $data->assign_date }}</td>
                             <td style="text-align:center">
-                                <a href="{{ url('/returnEquip/'.$data->id) }}" class="btn btn-sm btn-warning">Return</a>
+                                <a href="{{ url('/returnEquip/'.$data->id) }}" class="btn btn-orange">Return</a>
                             </td>
                         </tr>
                     @endforeach

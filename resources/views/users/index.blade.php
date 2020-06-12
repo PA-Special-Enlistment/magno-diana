@@ -10,7 +10,7 @@
                         <ul class="navbar-nav ml-lg-auto">
                             <li class="nav-item">
                                 <a href="{{ route('users.create') }}" data-target="#myModal" role="button" class="btn btn-link text-default text-black" data-toggle="tooltip" data-placement="left" title="ADD PARTNER" >  
-                                <i class="fa fa-user-plus fa-2x"></i> Add User
+                                <i class="fa fa-user-plus fa-2x"></i> Add New User
                                 </a>
                             </li>
                         </ul>
@@ -18,7 +18,7 @@
                 </div>
                 <div class="card shadow border-0" id="example2">
                     <div class="table-responsive">  
-                        <table class="table">
+                        <table class="table table-hover">
                         <thead>
                             <tr>
                             <th style="text-align:center">No.</th>
@@ -39,7 +39,7 @@
                             <td style="text-align:center">{{ $user->mobile_number }}</td>
                             <td style="text-align:center">{{ $user->email }}</td>
                             <td style="text-align:center">
-                                <a href="{{ url('/edit/'.$user->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                                <a href="{{ url('/edit/'.$user->id) }}" class="btn btn-red">Edit</a>
                             </td>
         
         

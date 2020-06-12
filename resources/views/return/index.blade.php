@@ -12,7 +12,7 @@
 
                 <div class="card shadow border-0" id="example2">
                     <div class="table-responsive">  
-                        <table class="table">
+                        <table class="table table-hover">
                         <thead>
                             <tr>
                             <th style="text-align:center">ID/Code</th>

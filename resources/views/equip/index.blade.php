@@ -15,7 +15,7 @@
                         <ul class="navbar-nav ml-lg-auto">
                             <li class="nav-item">
                                 <a  href="{{ route('equipment.create') }}" data-target="#myModal" role="button" class="btn btn-link text-default text-black" data-toggle="tooltip" title="ADD PARTNER" >  
-                                <i class="fa fa-user-plus fa-2x"></i> Add Equipment
+                                <i class="fa fa-user-plus fa-2x"></i> Add New Equipment
                                     </a>
                             </li>
                         </ul>
@@ -23,7 +23,7 @@
                 </div>
                 <div class="card shadow border-0" id="example2">
                     <div class="table-responsive">  
-                        <table class="table">
+                        <table class="table table-hover">
                         <thead>
                             <tr>
                             <th style="text-align:center">ID/Code</th>
@@ -36,14 +36,14 @@
                         </thead>
                         @foreach($data as $equip)
                         <tr>
-                            <td style="text-align:center">{{ $equip->id }}</td>
+                            <td style="text-align:center">{{ $equip->code }}</td>
                             <td style="text-align:center">{{ $equip->registration_date }}</td>
                             <td style="text-align:center">{{ $equip->type }}</td>
                             <td style="text-align:center">{{ $equip->name }}</td>
                             <td style="text-align:center">{{ $equip->count }}</td>
                             <td style="text-align:center">
-                                <a href="{{ url('/edit/'.$equip->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                                <a href="{{ url('/assign/'.$equip->id) }}" class="btn btn-sm btn-warning">Assign</a>
+                                <a href="{{ url('/edit/'.$equip->id) }}" class="btn btn-red">Edit</a>
+                                <a href="{{ url('/assign/'.$equip->id) }}" class="btn btn-green">Assign</a>
                             </td>
                         </tr>
                         @endforeach
