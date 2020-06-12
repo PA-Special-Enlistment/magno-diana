@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Equipment;
 use App\LibStatus;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\EquipmentExport;
 
 class EquipmentController extends Controller
 {
@@ -15,6 +17,11 @@ class EquipmentController extends Controller
      */
     public function __construct(){
         $this->middleware('auth');
+    }
+
+    public function export() 
+    {
+        return Excel::download(new EquipmentExport, 'Equipment.xlsx');
     }
 
     public function getStatus(){

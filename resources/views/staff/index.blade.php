@@ -12,6 +12,9 @@
                                 <a href="{{ route('staff.create') }}"  data-target="#myModal" role="button" class="btn btn-link text-default text-black" data-toggle="tooltip" data-placement="left" title="Add Staff" >  
                                 <i class="fa fa-user-plus fa-2x"></i> Add New Staff
                                 </a>
+                                <a href="{{ url('/downloadStaff') }}" role="button" class="btn btn-link text-default text-black" >  
+                                    <i class="fa fa-user-plus fa-2x"></i> Export CSV
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -42,7 +45,7 @@
                             <td style="text-align:center">
                                 <a href="{{ url('/editStaff/'.$data->id) }}" class="btn btn-red ">Edit</a>
                                 <a href="{{ url('/assignStaff/'.$data->id) }}" class="btn btn-green">Assigned</a>
-                                {{-- <a href="{{ url('/return/'.$data->id) }}" class="btn btn-sm btn-warning">Return</a> --}}
+                                <a href="{{ url('/return/'.$data->id) }}" class="btn btn-return">Return</a>
                             </td>
                         </tr>
                     @endforeach

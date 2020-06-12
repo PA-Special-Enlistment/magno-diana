@@ -12,6 +12,9 @@
                                 <a href="{{ route('users.create') }}" data-target="#myModal" role="button" class="btn btn-link text-default text-black" data-toggle="tooltip" data-placement="left" title="ADD PARTNER" >  
                                 <i class="fa fa-user-plus fa-2x"></i> Add New User
                                 </a>
+                                <a href="{{ url('/download') }}" role="button" class="btn btn-link text-default text-black" >  
+                                <i class="fa fa-user-plus fa-2x"></i> Export CSV
+                                </a>
                             </li>
                         </ul>
                     </div>

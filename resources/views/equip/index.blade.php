@@ -16,7 +16,10 @@
                             <li class="nav-item">
                                 <a  href="{{ route('equipment.create') }}" data-target="#myModal" role="button" class="btn btn-link text-default text-black" data-toggle="tooltip" title="ADD PARTNER" >  
                                 <i class="fa fa-user-plus fa-2x"></i> Add New Equipment
-                                    </a>
+                                </a>
+                                <a href="{{ url('/downloadEquipment') }}" role="button" class="btn btn-link text-default text-black" >  
+                                    <i class="fa fa-user-plus fa-2x"></i> Export CSV
+                                </a>
                             </li>
                         </ul>
                     </div>

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Staff;
 use Session;
 use App\LibSuffixName;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\StaffExport;
 
 class StaffController extends Controller
 {
@@ -16,6 +18,11 @@ class StaffController extends Controller
      */
     public function __construct(){
         $this->middleware('auth');
+    }
+
+    public function export() 
+    {
+        return Excel::download(new StaffExport, 'Staff.xlsx');
     }
 
     public function index()

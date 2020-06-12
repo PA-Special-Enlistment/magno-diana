@@ -9,6 +9,8 @@ use App\Staff;
 use App\Equipment;
 use Session;
 use DB;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ReturnExport;
 
 class ReturnController extends Controller
 {
@@ -17,6 +19,11 @@ class ReturnController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function export() 
+    {
+        return Excel::download(new ReturnExport, 'Return.xlsx');
+    }
+    
     public function index()
     {
         //
@@ -90,7 +97,7 @@ class ReturnController extends Controller
     public function editReturn($id)
     {
         $staffID = $id;
-        $name = Staff::select(DB::raw('CONCAT(first_name, " ", last_name) AS full_name'), 'id')->where('id', '=', $id)->pluck('full_name')->first();
+        $name = Staff::select(DB::raw('CONCAT(first_name, " ", last_name) AS full_name'), 'id')->where('id', '=', $id)->pluck('full_name')->first() ;
         $record = Returns::select('code', 'equipment_id', 'return.staff_id', 'return.id', 'return.assign_id', 'type', 'name', 'date_return', 'remarks')->where('return.staff_id', '=', $id)->join('equipment', 'return.equipment_id', '=', 'equipment.id')->join('staff', 'return.staff_id', '=','staff.id')->get();
         // $equipment = Equipment::orderBy('id')->pluck('name', 'id');
 

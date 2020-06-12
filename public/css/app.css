@@ -2728,6 +2728,12 @@ fieldset:disabled a.btn {
   border-color: #eb2112;
 }
 
+.btn-return {
+  color: #fff;
+  background-color: #227dc7;
+  border-color: #227dc7;
+}
+
 .btn-orange {
   color: #fff;
   background-color: #eb8612;

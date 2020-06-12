@@ -8,6 +8,8 @@ use App\Staff;
 use App\Assign;
 use DB;
 use Session;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\AssignExport;
 
 class AssignController extends Controller
 {
@@ -25,6 +27,11 @@ class AssignController extends Controller
         foreach ($staff as $staffs) {
             $this->staf[$staffs->id] = $staffs->first_name;
         }
+    }
+
+    public function export() 
+    {
+        return Excel::download(new AssignExport, 'Assign.xlsx');
     }
 
     public function index()
