@@ -19,9 +19,9 @@ class ReturnController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function export() 
+    public function export(Request $request) 
     {
-        return Excel::download(new ReturnExport, 'Return.xlsx');
+        return Excel::download(new ReturnExport($request->id), 'Return.xlsx');
     }
     
     public function index()
@@ -98,10 +98,11 @@ class ReturnController extends Controller
     {
         $staffID = $id;
         $name = Staff::select(DB::raw('CONCAT(first_name, " ", last_name) AS full_name'), 'id')->where('id', '=', $id)->pluck('full_name')->first() ;
+        $staff_id = Staff::select('id')->where('id', '=', $id)->pluck('id')->first() ;
         $record = Returns::select('code', 'equipment_id', 'return.staff_id', 'return.id', 'return.assign_id', 'type', 'name', 'date_return', 'remarks')->where('return.staff_id', '=', $id)->join('equipment', 'return.equipment_id', '=', 'equipment.id')->join('staff', 'return.staff_id', '=','staff.id')->get();
         // $equipment = Equipment::orderBy('id')->pluck('name', 'id');
 
-        return view('return.index', compact('name'))->with(['record' => $record]);
+        return view('return.index', compact('name', 'staff_id'))->with(['record' => $record]);
     }
 
     /**

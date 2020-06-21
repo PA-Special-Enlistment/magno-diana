@@ -29,9 +29,9 @@ class AssignController extends Controller
         }
     }
 
-    public function export() 
+    public function export(Request $request) 
     {
-        return Excel::download(new AssignExport, 'Assign.xlsx');
+        return Excel::download(new AssignExport($request->id), 'Assign.xlsx');
     }
 
     public function index()
@@ -108,10 +108,11 @@ class AssignController extends Controller
     {
         $staffID = $id;
         $name = Staff::select(DB::raw('CONCAT(first_name, " ", last_name) AS full_name'), 'id')->where('id', '=', $id)->pluck('full_name')->first();
+        $staff_id = Staff::select('id')->where('id', '=', $id)->pluck('id')->first();
         $record = Assign::select('code', 'equipment_id', 'assign.staff_id', 'assign.id', 'type', 'name', 'assign_date')->where('assign.staff_id', '=', $id)->join('equipment', 'assign.equipment_id', '=', 'equipment.id')->join('staff', 'assign.staff_id', '=','staff.id')->get();
         // $equipment = Equipment::orderBy('id')->pluck('name', 'id');
 
-        return view('assign.index', compact('name'))->with(['record' => $record]);
+        return view('assign.index', compact('name', 'staff_id'))->with(['record' => $record]);
     }
 
     /**

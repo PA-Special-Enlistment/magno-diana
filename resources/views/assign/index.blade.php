@@ -9,7 +9,7 @@
                         <a class="navbar-brand">Assigned Equipments for {{ $name }}</a>
                         <ul class="navbar-nav ml-lg-auto">
                             <li class="nav-item">
-                                <a href="{{ url('/downloadAssign') }}" role="button" class="btn btn-link text-default text-black" >  
+                                <a href="{{ url('/downloadAssign/'.$staff_id) }}" role="button" class="btn btn-link text-default text-black" >  
                                     <i class="fa fa-user-plus fa-2x"></i> Export CSV
                                 </a>
                             </li>

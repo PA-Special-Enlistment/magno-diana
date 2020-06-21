@@ -42,9 +42,9 @@ Route::resource('equipment', 'EquipmentController');
 Route::resource('assign', 'AssignController');
 Route::get('/download', 'UsersController@export');
 Route::get('/downloadStaff', 'StaffController@export');
-Route::get('/downloadReturn', 'ReturnController@export');
+Route::get('/downloadReturn/{id}', 'ReturnController@export');
 Route::get('/downloadEquipment', 'EquipmentController@export');
-Route::get('/downloadAssign', 'AssignController@export');
+Route::get('/downloadAssign/{id}', 'AssignController@export');
 // Route::get('/staff', function (){
 //     return view('staff.index');
 // });

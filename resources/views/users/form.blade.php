@@ -129,38 +129,38 @@
             </div>    
             <div class="row">
                 <div class="col-md-3">
-                    {{ Form::label('last_name','LAST NAME') }}
+                    {{ Form::label('last_name','Last Name') }}
                     {{ Form::text('last_name',null,['class'=>'form-control','id'=>'last_name']) }} 
                 </div>
                 <div class="col-md-3">
-                    {{ Form::label('first_name','FIRST NAME') }}
+                    {{ Form::label('first_name','First Name') }}
                     {{ Form::text('first_name',null,['class'=>'form-control','id'=>'first_name']) }} 
                 </div>
                 <div class="col-md-3">
-                    {{ Form::label('middle_name','MIDDLE NAME') }}
+                    {{ Form::label('middle_name','Middle Name') }}
                     {{ Form::text('middle_name',null,['class'=>'form-control','id'=>'middle_name']) }} 
                 </div>
                 <div class="col-md-3">
-                    {{ Form::label('suffix_name','Assignee') }}
+                    {{ Form::label('suffix_name','Suffix Name') }}
                     {{ Form::select('suffix_name',$suffix_name, isset($users) ? null : 'NOTAP',['class' => 'form-control','id' => 'suffix_name','name' => 'suffix_name']) }}
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-3">
-                    {{ Form::label('birthdate','BIRTHDATE') }}
+                    {{ Form::label('birthdate','Birthdate') }}
                     {{ Form::date('birthdate',null,['class'=>'form-control','id'=>'birthdate','name'=>'birthdate']) }} 
                 </div> 
                 <div class="col-md-3">
-                    {{ Form::label('email','EMAIL') }}
+                    {{ Form::label('email','Email') }}
                     {{ Form::email('email',null,['class'=>'form-control','id'=>'email']) }} 
                 </div>
                 <div class="col-md-3">
-                    {{ Form::label('mobile_number','MOBILE NUMBER') }}
+                    {{ Form::label('mobile_number','Mobile Number') }}
                     {{ Form::text('mobile_number',null,['class'=>'form-control','id'=>'mobile_number']) }} 
                 </div>
                 <div class="col-md-3">
-                    {{ Form::label('isAdmin','IS ADMIN') }}
+                    {{ Form::label('isAdmin','Is Admin?') }}
                     @if(isset($user))
                     {{ Form::select('isAdmin', ['Y' => 'Yes', 'N' => 'No'],null, ['class' => 'form-control','id' => 'isAdmin','name' => 'isAdmin']) }}
                     @else

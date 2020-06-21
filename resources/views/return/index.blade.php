@@ -6,10 +6,10 @@
             <div class="card">
                 <div class="card-header">
                     <div class="row">
-                        <a class="navbar-brand">Return Equipments from   {{ $name }}</a>
+                        <a class="navbar-brand">Return Equipments of   {{ $name }}</a>
                         <ul class="navbar-nav ml-lg-auto">
                             <li class="nav-item">
-                                <a href="{{ url('/downloadReturn') }}" role="button" class="btn btn-link text-default text-black" >  
+                                <a href="{{ url('/downloadReturn/'.$staff_id) }}" role="button" class="btn btn-link text-default text-black" >  
                                     <i class="fa fa-user-plus fa-2x"></i> Export CSV
                                 </a>
                             </li>
