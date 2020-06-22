@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Staff;
 use Session;
 use App\LibSuffixName;
+use App\LibDesignation;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\StaffExport;
 
@@ -27,7 +28,9 @@ class StaffController extends Controller
 
     public function index()
     {
-        $staff = Staff::all();
+        $staff = Staff::leftJoin('lib_designation', 'lib_designation.code', '=', 'staff.designation')
+                        ->orderBy('id', 'ASC')
+                        ->get();
         return view('staff.index',['staff' => $staff]);
     }
 
@@ -39,7 +42,8 @@ class StaffController extends Controller
     public function create()
     {
         $suffix_name = LibSuffixName::pluck('suffix_desc', 'suffix_code');
-        return view('staff.form', compact('suffix_name'));//,$partner->id);
+        $designation = LibDesignation::pluck('desc', 'desc');
+        return view('staff.form', compact('suffix_name', 'designation'));//,$partner->id);
     }
 
     /**
@@ -98,9 +102,10 @@ class StaffController extends Controller
     public function edit($id)
     {
         $suffix_name = LibSuffixName::pluck('suffix_desc', 'suffix_code');
+        $designation = LibDesignation::pluck('desc', 'desc');
         $staff = Staff::find($id);
 
-        return view('staff.form', compact('suffix_name'))->with([
+        return view('staff.form', compact('suffix_name', 'designation'))->with([
             'staff' => $staff
           ]);
     }

@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="row">
-                        <a class="navbar-brand">USER</a>
+                        <a class="navbar-brand">List of Users</a>
                         <ul class="navbar-nav ml-lg-auto">
                             <li class="nav-item">
                                 <a href="{{ route('users.create') }}" data-target="#myModal" role="button" class="btn btn-link text-default text-black" data-toggle="tooltip" data-placement="left" title="ADD PARTNER" >  

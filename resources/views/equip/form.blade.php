@@ -25,19 +25,27 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6">
-                    {{ Form::label('type','Type of Product') }}
-                    {{ Form::text('type',null,['class'=>'form-control','id'=>'type']) }} 
-                </div>
-                <div class="col-md-6">
+                <div class="col-md-12">
                     {{ Form::label('count','Status') }}
                     {{ Form::select('count',$status, null,['class' => 'form-control','id' => 'count','name' => 'count']) }}
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    {{ Form::label('name','Brand and Specs') }}
+                    {{ Form::label('type','Type of Equipment') }}
+                    {{ Form::select('type',$type, null,['class' => 'form-control','id' => 'type','name' => 'type']) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    {{ Form::label('name','Brand') }}
                     {{ Form::text('name',null,['class'=>'form-control','id'=>'name']) }} 
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    {{ Form::label('specs','Specification') }}
+                    {{ Form::text('specs',null,['class'=>'form-control','id'=>'specs']) }} 
                 </div>
             </div>
             <div class="card-footer" style="text-align:center">

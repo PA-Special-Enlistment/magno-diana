@@ -171,7 +171,7 @@
             <div class="row">
                 <div class="col-md-12">
                     {{ Form::label('designation','Designation') }}
-                    {{ Form::text('designation',null,['class'=>'form-control','id'=>'designation']) }} 
+                    {{ Form::select('designation',$designation, isset($users) ? null : '01',['class' => 'form-control','id' => 'designation','name' => 'designation']) }}
                 </div>
             </div>
             <div class="card-footer border-primary" style="text-align:center">

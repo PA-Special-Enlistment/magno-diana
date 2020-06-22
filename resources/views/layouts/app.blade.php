@@ -78,9 +78,9 @@
                     </li>
                     @if(Auth::user()->isAdmin == 'Y')
                     <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/users')}}">Users
-                            </a>
-                        </li>
+                        <a class="nav-link" href="{{ url('/users')}}">Users
+                        </a>
+                    </li>
                     <div class="dropdown-divider"></div>
                     @else
                     @endif

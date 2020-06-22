@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="row">
-                        <a class="navbar-brand">Staff</a>
+                        <a class="navbar-brand">List of Staff</a>
                         <ul class="navbar-nav ml-lg-auto">
                             <li class="nav-item">
                                 <a href="{{ route('staff.create') }}"  data-target="#myModal" role="button" class="btn btn-link text-default text-black" data-toggle="tooltip" data-placement="left" title="Add Staff" >  

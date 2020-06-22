@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\LibSuffixName;
+use App\LibDesignation;
 use Session;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\UsersExport;
@@ -24,10 +25,20 @@ class UsersController extends Controller
     {
         return Excel::download(new UsersExport, 'Users.xlsx');
     }
+
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'username' => ['required', 'string', 'username', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+    }
     
     public function index()
     {
-        $data = User::all();
+        $data = User::leftJoin('lib_designation', 'user.designation', '=', 'lib_designation.code')
+                    ->orderBy('id', 'ASC')
+                    ->get();
         return view('users.index',['users' => $data]);
     }
 
@@ -39,7 +50,8 @@ class UsersController extends Controller
     public function create()
     {
         $suffix_name = LibSuffixName::pluck('suffix_desc', 'suffix_code');
-        return view('users.form', compact('suffix_name'));//,$partner->id);
+        $designation = LibDesignation::pluck('desc', 'desc');
+        return view('users.form', compact('suffix_name', 'designation'));//,$partner->id);
     }
 
     /**
@@ -59,7 +71,7 @@ class UsersController extends Controller
         if($count >= 1){
 
           
-            Session::flash('repeat','Staff Already Exist');
+            $request->session()->flash('repeat','Staff Already Exist');
             return redirect()->route('users.index');
 
         }else{
@@ -79,7 +91,7 @@ class UsersController extends Controller
 
         $user->save();
 
-        Session::flash('success','User record was Successfully Updated');
+        $request->session()->flash('success','User record was Successfully Updated');
 
         return redirect()->route('users.index');
         }
@@ -105,9 +117,10 @@ class UsersController extends Controller
     public function edit($id)
     {
         $suffix_name = LibSuffixName::pluck('suffix_desc', 'suffix_code');
+        $designation = LibDesignation::pluck('desc', 'desc');
         $user = User::find($id);
 
-        return view('users.form', compact('suffix_name'))->with([
+        return view('users.form', compact('suffix_name', 'designation'))->with([
             'users' => $user
           ]);
     }
@@ -137,7 +150,7 @@ class UsersController extends Controller
 
         $users->save();
 
-        Session::flash('success','User record was Successfully Updated');
+        $request->session()->flash('success','User record was Successfully Updated');
 
         return redirect()->route('users.index');
     }

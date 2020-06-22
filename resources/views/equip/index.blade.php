@@ -31,7 +31,7 @@
                             <tr>
                             <th style="text-align:center">ID/Code</th>
                             <th style="text-align:center">Registration Date</th>
-                            <th style="text-align:center">Type of Product</th>
+                            <th style="text-align:center">Type of Equipment</th>
                             <th style="text-align:center">Brand</th>
                             <th style="text-align:center">Status</th>
                             <th style="text-align:center">Action</th>

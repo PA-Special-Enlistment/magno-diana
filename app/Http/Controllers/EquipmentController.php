@@ -7,6 +7,7 @@ use App\Equipment;
 use App\LibStatus;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\EquipmentExport;
+use App\LibEquipmentType;
 
 class EquipmentController extends Controller
 {
@@ -42,7 +43,8 @@ class EquipmentController extends Controller
     public function create()
     {
         $status = LibStatus::pluck('desc', 'desc')->all();
-        return view('equip.form', compact('status'));
+        $type = LibEquipmentType::pluck('equipment_desc', 'equipment_desc')->all();
+        return view('equip.form', compact('status', 'type'));
     }
 
     /**
@@ -59,6 +61,7 @@ class EquipmentController extends Controller
         $user->name = $request->input('name');
         $user->type = $request->input('type');
         $user->count = $request->input('count');
+        $user->specs = $request->input('specs');
         $user->registration_date = $request->input('registration_date');
 
         $user->save();
@@ -89,8 +92,10 @@ class EquipmentController extends Controller
     public function edit($id)
     {
         $data = Equipment::find($id);
+        $type = LibEquipmentType::pluck('equipment_desc', 'equipment_desc')->all();
+        $status = LibStatus::pluck('desc', 'desc')->all();
 
-        return view('equip.form')->with([
+        return view('equip.form', compact('type', 'status'))->with([
             'data' => $data
           ]);
     }

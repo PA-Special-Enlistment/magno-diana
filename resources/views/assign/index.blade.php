@@ -23,7 +23,7 @@
                         <thead>
                             <tr>
                             <th style="text-align:center">ID/Code</th>
-                            <th style="text-align:center">Equipment Type</th>
+                            <th style="text-align:center">Type of Equipment</th>
                             <th style="text-align:center">Brand</th>
                             <th style="text-align:center">Date Assigned</th>
                             <th style="text-align:center">Action</th>
