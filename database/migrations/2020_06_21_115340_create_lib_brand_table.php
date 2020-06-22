@@ -16,6 +16,7 @@ class CreateLibBrandTable extends Migration
         Schema::create('lib_brand', function (Blueprint $table) {
             $table->char('brand_code');
             $table->string('brand_desc');
+            $table->string('category');
         });
 
         DB::table('lib_brand')

@@ -8,7 +8,8 @@ class LibDesignation extends Model
 {
     protected $table = 'lib_designation';
 
-    // protected $fillable = [
-    //     ''
-    // ];
+    protected $fillable = [
+        'code',
+        'desc'
+    ];
 }

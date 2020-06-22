@@ -28,7 +28,7 @@ class StaffController extends Controller
 
     public function index()
     {
-        $staff = Staff::leftJoin('lib_designation', 'lib_designation.code', '=', 'staff.designation')
+        $staff = Staff::select('staff.id', 'first_name', 'middle_name', 'last_name', 'designation', 'birthdate', 'mobile_number', 'email')->leftJoin('lib_designation', 'lib_designation.code', '=', 'staff.designation')
                         ->orderBy('id', 'ASC')
                         ->get();
         return view('staff.index',['staff' => $staff]);

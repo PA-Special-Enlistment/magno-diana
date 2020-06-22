@@ -36,7 +36,7 @@ class UsersController extends Controller
     
     public function index()
     {
-        $data = User::leftJoin('lib_designation', 'user.designation', '=', 'lib_designation.code')
+        $data = User::select('user.id', 'first_name', 'middle_name', 'last_name', 'designation', 'birthdate', 'mobile_number', 'email')->leftJoin('lib_designation', 'user.designation', '=', 'lib_designation.code')
                     ->orderBy('id', 'ASC')
                     ->get();
         return view('users.index',['users' => $data]);
