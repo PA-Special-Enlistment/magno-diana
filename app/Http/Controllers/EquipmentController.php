@@ -96,7 +96,7 @@ class EquipmentController extends Controller
         $status = LibStatus::pluck('desc', 'desc')->all();
 
         return view('equip.form', compact('type', 'status'))->with([
-            'data' => $data
+            'equipment' => $data
           ]);
     }
 
@@ -109,7 +109,21 @@ class EquipmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $equipment = Equipment::find($id);
+
+        $equipment->code = $request->input('code');
+        $equipment->name = $request->input('name');
+        $equipment->type = $request->input('type');
+        $equipment->count = $request->input('count');
+        $equipment->specs = $request->input('specs');
+        $equipment->registration_date = $request->input('registration_date');
+
+        $equipment->save();
+
+        $message="Registered successfully";
+
+        return redirect()->route('equipment.index',compact('message'));
+        return back()->with('success', 'Registered Sucessfulley');
     }
 
     /**
